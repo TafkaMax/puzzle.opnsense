@@ -493,6 +493,32 @@ VERSION_MAP = {
         },
     },
     "25.1": {
+        "system_access_users": {
+            "users": "system/user",
+            "uid": "system/nextuid",
+            "gid": "system/nextgid",
+            "system": "system",
+            "maximumtableentries": "system/maximumtableentries",
+            "php_requirements": [
+                "/usr/local/etc/inc/system.inc",
+            ],
+            "configure_functions": {},
+        },
+        "password": {
+            "php_requirements": [
+                "/usr/local/etc/inc/auth.inc",
+            ],
+            "configure_functions": {
+                "password": {
+                    "name": "echo password_hash",
+                    "configure_params": [
+                        "'password'",
+                        "PASSWORD_BCRYPT",
+                        "[ 'cost' => 11 ]",
+                    ],
+                },
+            },
+        },
         "system_settings_general": {
             "hostname": "system/hostname",
             "domain": "system/domain",
